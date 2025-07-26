@@ -1,0 +1,16 @@
+{
+  "creativetab.abysstest.abyss_items": "Abyss Items",
+  "creativetab.abysstest.abyss_blocks": "Abyss Blocks",
+
+  "item.abysstest.raw_something": "Raw Something",
+  "item.abysstest.something_ingot": "Something Ingot",
+
+  "item.abysstest.raw_thing": "Raw Thing",
+  "item.abysstest.thing_ingot": "Thing Ingot",
+
+  "block.abysstest.abysstone": "Abysstone",
+  "block.abysstest.something_ore": "Something Ore",
+  "block.abysstest.something_block": "Block of Something",
+  "block.abysstest.thing_ore": "Thing Ore",
+  "block.abysstest.thing_block": "Block of Thing"
+}

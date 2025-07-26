@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "abysstest:abyss_wastes",
+    "abysstest:crystal_canyon",
+    "abysstest:azure_grove",
+    "abysstest:night_grove"
+  ]
+}

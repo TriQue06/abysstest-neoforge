@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_something_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "abysstest:something_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "abysstest:something_ingot_from_blasting_something_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_something_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "abysstest:something_ingot_from_blasting_something_ore"
+    ]
+  }
+}

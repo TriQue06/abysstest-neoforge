@@ -1,0 +1,120 @@
+{
+  "type": "abysstest:abyss_type",
+  "generator": {
+    "settings": "abysstest:abyss",
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "abysstest:night_grove",
+          "parameters": {
+            "temperature": [
+              -0.6,
+              -0.2
+            ],
+            "humidity": [
+              -0.9,
+              0.2
+            ],
+            "continentalness": [
+              -0.3,
+              0.2
+            ],
+            "erosion": [
+              -1,
+              -0.3
+            ],
+            "depth": 0,
+            "weirdness": [
+              -1,
+              -0.5
+            ],
+            "offset": 0
+          }
+        },
+        {
+          "biome": "abysstest:crystal_canyon",
+          "parameters": {
+            "temperature": [
+              -0.4,
+              -0.1
+            ],
+            "humidity": [
+              -0.2,
+              0.2
+            ],
+            "continentalness": [
+              0,
+              0.8
+            ],
+            "erosion": [
+              0.4,
+              0.6
+            ],
+            "depth": 0,
+            "weirdness": [
+              -0.9,
+              -0.33
+            ],
+            "offset": 0
+          }
+        },
+        {
+          "biome": "abysstest:azure_grove",
+          "parameters": {
+            "temperature": [
+              -0.2,
+              0.3
+            ],
+            "humidity": [
+              0.2,
+              0.8
+            ],
+            "continentalness": [
+              -0.2,
+              0.5
+            ],
+            "erosion": [
+              0,
+              0.6
+            ],
+            "depth": 0,
+            "weirdness": [
+              -0.9,
+              -0.6
+            ],
+            "offset": 0
+          }
+        },
+        {
+          "biome": "abysstest:abyss_wastes",
+          "parameters": {
+            "temperature": [
+              -0.5,
+              0
+            ],
+            "humidity": [
+              0,
+              0.5
+            ],
+            "continentalness": [
+              -0.1,
+              0.3
+            ],
+            "erosion": [
+              -0.4,
+              0.2
+            ],
+            "depth": 0,
+            "weirdness": [
+              -0.85,
+              -0.5
+            ],
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}
