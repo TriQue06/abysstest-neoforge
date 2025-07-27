@@ -4,8 +4,6 @@ import net.trique.abysstest.block.AbyssBlocks;
 import net.trique.abysstest.item.AbyssCreativeModeTabs;
 import net.trique.abysstest.item.AbyssItems;
 import net.trique.abysstest.sound.AbyssSounds;
-import net.trique.abysstest.worldgen.AbyssConfiguredFeatures;
-import net.trique.abysstest.worldgen.AbyssPlacedFeatures;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;

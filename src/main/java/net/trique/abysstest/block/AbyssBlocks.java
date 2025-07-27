@@ -6,12 +6,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.trique.abysstest.AbyssTest;
 import net.trique.abysstest.item.AbyssItems;
+import net.trique.abysstest.material.AbyssFluids;
 
 import java.util.function.Supplier;
 
@@ -56,6 +59,21 @@ public class AbyssBlocks {
                     .strength(0.4F)
                     .sound(SoundType.NYLIUM)
                     .randomTicks()));
+
+    public static final DeferredBlock<LiquidBlock> PURPLE_LAVA = BLOCKS.register("purple_lava",
+            () -> new LiquidBlock(AbyssFluids.PURPLE_LAVA, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .replaceable()
+                    .noCollission()
+                    .randomTicks()
+                    .strength(100.0F)
+                    .lightLevel((p_50755_) -> 15)
+                    .pushReaction(PushReaction.DESTROY)
+                    .noLootTable()
+                    .liquid()
+                    .sound(SoundType.EMPTY)
+                    .noOcclusion()
+            ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
