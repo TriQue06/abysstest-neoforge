@@ -36,6 +36,8 @@ public class AbyssCreativeModeTabs {
                         output.accept(AbyssBlocks.SOMETHING_BLOCK);
                         output.accept(AbyssBlocks.THING_ORE);
                         output.accept(AbyssBlocks.THING_BLOCK);
+                        output.accept(AbyssBlocks.NIGHT_NYLIUM);
+                        output.accept(AbyssBlocks.AZURE_NYLIUM);
                     }).build());
 
     public static void register(IEventBus eventBus) {

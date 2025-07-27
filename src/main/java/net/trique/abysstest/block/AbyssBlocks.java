@@ -3,9 +3,7 @@ package net.trique.abysstest.block;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -40,6 +38,24 @@ public class AbyssBlocks {
     public static final DeferredBlock<Block> THING_BLOCK = registerBlock("thing_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.IRON_XYLOPHONE).strength(5F, 6F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+    public static final DeferredBlock<Block> AZURE_NYLIUM = registerBlock("azure_nylium",
+            () -> new AbyssNyliumBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_LIGHT_BLUE)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(0.4F)
+                    .sound(SoundType.NYLIUM)
+                    .randomTicks()));
+
+    public static final DeferredBlock<Block> NIGHT_NYLIUM = registerBlock("night_nylium",
+            () -> new AbyssNyliumBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(0.4F)
+                    .sound(SoundType.NYLIUM)
+                    .randomTicks()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

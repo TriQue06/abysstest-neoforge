@@ -19,9 +19,23 @@ public class AbyssBlockStateProvider extends BlockStateProvider {
         blockWithItem(AbyssBlocks.SOMETHING_BLOCK);
         blockWithItem(AbyssBlocks.THING_ORE);
         blockWithItem(AbyssBlocks.THING_BLOCK);
+
+        nyliumBlockWithItem(AbyssBlocks.AZURE_NYLIUM, "abysstone");
+        nyliumBlockWithItem(AbyssBlocks.NIGHT_NYLIUM, "abysstone");
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
         simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
+    }
+
+    private void nyliumBlockWithItem(DeferredBlock<?> block, String baseBlockTextureName) {
+        String name = block.getId().getPath();
+        models().cubeBottomTop(
+                name,
+                modLoc("block/" + name + "_side"),      // yan yüzey (örn: azure_nylium_side.png)
+                modLoc("block/" + baseBlockTextureName),// alt yüzey (örn: abysstone.png)
+                modLoc("block/" + name)                 // üst yüzey (örn: azure_nylium.png)
+        );
+        simpleBlockWithItem(block.get(), models().getExistingFile(modLoc(name)));
     }
 }

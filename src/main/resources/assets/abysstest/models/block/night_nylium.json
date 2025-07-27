@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "abysstest:block/abysstone",
+    "side": "abysstest:block/night_nylium_side",
+    "top": "abysstest:block/night_nylium"
+  }
+}

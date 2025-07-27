@@ -4,6 +4,8 @@
     "abysstest:something_ore",
     "abysstest:something_block",
     "abysstest:thing_ore",
-    "abysstest:thing_block"
+    "abysstest:thing_block",
+    "abysstest:night_nylium",
+    "abysstest:azure_nylium"
   ]
 }

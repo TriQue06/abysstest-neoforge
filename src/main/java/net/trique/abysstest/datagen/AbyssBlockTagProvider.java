@@ -23,13 +23,17 @@ public class AbyssBlockTagProvider extends BlockTagsProvider {
                 .add(AbyssBlocks.SOMETHING_ORE.get())
                 .add(AbyssBlocks.SOMETHING_BLOCK.get())
                 .add(AbyssBlocks.THING_ORE.get())
-                .add(AbyssBlocks.THING_BLOCK.get());
+                .add(AbyssBlocks.THING_BLOCK.get())
+                .add(AbyssBlocks.NIGHT_NYLIUM.get())
+                .add(AbyssBlocks.AZURE_NYLIUM.get());
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(AbyssBlocks.ABYSSTONE.get())
                 .add(AbyssBlocks.SOMETHING_ORE.get())
                 .add(AbyssBlocks.SOMETHING_BLOCK.get())
                 .add(AbyssBlocks.THING_ORE.get())
-                .add(AbyssBlocks.THING_BLOCK.get());
+                .add(AbyssBlocks.THING_BLOCK.get())
+                .add(AbyssBlocks.NIGHT_NYLIUM.get())
+                .add(AbyssBlocks.AZURE_NYLIUM.get());
     }
 }
