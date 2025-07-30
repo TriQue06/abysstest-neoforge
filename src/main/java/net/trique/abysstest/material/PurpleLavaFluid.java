@@ -47,7 +47,7 @@ public abstract class PurpleLavaFluid extends FlowingFluid {
 
     @Override
     public Item getBucket() {
-        return Items.LAVA_BUCKET; // Eğer özel kova yoksa, geçici olarak bu kullanılabilir
+        return null;
     }
 
     @Override

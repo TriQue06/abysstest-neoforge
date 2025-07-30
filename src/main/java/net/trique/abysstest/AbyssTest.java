@@ -36,6 +36,9 @@ public class AbyssTest {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         LOGGER.info("Things are working fine, probably.");
+        event.enqueueWork(() -> {
+            AbyssPortal.register();
+        });
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

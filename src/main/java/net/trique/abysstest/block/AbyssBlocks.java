@@ -1,5 +1,6 @@
 package net.trique.abysstest.block;
 
+import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -74,6 +75,10 @@ public class AbyssBlocks {
                     .sound(SoundType.EMPTY)
                     .noOcclusion()
             ));
+
+    public static final DeferredBlock<CustomPortalBlock> ABYSS_PORTAL = BLOCKS.register("abyss_portal",
+            () -> new AbyssPortalBlock());
+
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

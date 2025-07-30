@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "abysstest:block/nether_portal_ns"
+    },
+    "axis=z": {
+      "model": "abysstest:block/nether_portal_ew"
+    }
+  }
+}
