@@ -3,6 +3,7 @@ package net.trique.abysstest;
 import net.trique.abysstest.block.AbyssBlocks;
 import net.trique.abysstest.item.AbyssCreativeModeTabs;
 import net.trique.abysstest.item.AbyssItems;
+import net.trique.abysstest.material.AbyssFluids;
 import net.trique.abysstest.sound.AbyssSounds;
 import org.slf4j.Logger;
 
@@ -26,6 +27,7 @@ public class AbyssTest {
     public AbyssTest(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
+        AbyssFluids.FLUIDS.register(modEventBus);
         AbyssCreativeModeTabs.register(modEventBus);
         AbyssItems.register(modEventBus);
         AbyssBlocks.register(modEventBus);

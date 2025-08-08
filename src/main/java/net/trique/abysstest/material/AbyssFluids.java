@@ -1,29 +1,33 @@
 package net.trique.abysstest.material;
 
-import com.google.common.collect.UnmodifiableIterator;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.FluidState;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.trique.abysstest.AbyssTest;
+
+import java.util.function.Supplier;
 
 public class AbyssFluids {
-    public static final FlowingFluid FLOWING_PURPLE_LAVA = register("flowing_purple_lava", new PurpleLavaFluid.Flowing());
-    public static final FlowingFluid PURPLE_LAVA = register("purple_lava", new PurpleLavaFluid.Source());
 
-    private static <T extends Fluid> T register(String key, T fluid) {
-        return (T)(Registry.register(BuiltInRegistries.FLUID, key, fluid));
+    private static final FluidType PURPLE_LAVA_TYPE = new FluidType(FluidType.Properties.create()
+            .density(3000)
+            .viscosity(6000)
+            .temperature(1300)
+            .lightLevel(10)
+            .canExtinguish(false)
+            .supportsBoating(false)) {};
+
+    public static FluidType getPurpleLavaType() {
+        return PURPLE_LAVA_TYPE;
     }
 
-    static {
-        for(Fluid fluid : BuiltInRegistries.FLUID) {
-            UnmodifiableIterator var2 = fluid.getStateDefinition().getPossibleStates().iterator();
+    public static final DeferredRegister<Fluid> FLUIDS =
+            DeferredRegister.create(Registries.FLUID, AbyssTest.MODID);
 
-            while(var2.hasNext()) {
-                FluidState fluidstate = (FluidState)var2.next();
-                Fluid.FLUID_STATE_REGISTRY.add(fluidstate);
-            }
-        }
+    public static final Supplier<Fluid> PURPLE_LAVA_STILL =
+            FLUIDS.register("purple_lava_still", PurpleLavaFluid.Source::new);
 
-    }
+    public static final Supplier<Fluid> PURPLE_LAVA_FLOW =
+            FLUIDS.register("purple_lava_flow", PurpleLavaFluid.Flowing::new);
 }

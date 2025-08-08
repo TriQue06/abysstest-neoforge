@@ -1,15 +1,13 @@
 package net.trique.abysstest.block;
 
-import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -61,24 +59,22 @@ public class AbyssBlocks {
                     .sound(SoundType.NYLIUM)
                     .randomTicks()));
 
-    public static final DeferredBlock<LiquidBlock> PURPLE_LAVA = BLOCKS.register("purple_lava",
-            () -> new LiquidBlock(AbyssFluids.PURPLE_LAVA, BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_PURPLE)
-                    .replaceable()
+    public static final DeferredBlock<Block> ABYSS_PORTAL = registerBlock("abyss_portal",
+            () -> new AbyssPortalBlock(BlockBehaviour.Properties.of()
                     .noCollission()
-                    .randomTicks()
-                    .strength(100.0F)
-                    .lightLevel((p_50755_) -> 15)
-                    .pushReaction(PushReaction.DESTROY)
-                    .noLootTable()
-                    .liquid()
-                    .sound(SoundType.EMPTY)
                     .noOcclusion()
-            ));
+                    .strength(-1.0F)
+                    .lightLevel(state -> 11)
+                    .pushReaction(net.minecraft.world.level.material.PushReaction.BLOCK)
+                    .noLootTable()));
 
-    public static final DeferredBlock<CustomPortalBlock> ABYSS_PORTAL = BLOCKS.register("abyss_portal",
-            () -> new AbyssPortalBlock());
-
+    public static final DeferredBlock<LiquidBlock> PURPLE_LAVA = registerBlock("purple_lava",
+            () -> new LiquidBlock((FlowingFluid) AbyssFluids.PURPLE_LAVA_STILL.get(),
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_PURPLE)
+                            .strength(100.0F)
+                            .noLootTable()
+                            .liquid()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

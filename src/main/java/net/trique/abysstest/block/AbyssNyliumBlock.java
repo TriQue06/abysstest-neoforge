@@ -33,15 +33,12 @@ public class AbyssNyliumBlock extends Block implements BonemealableBlock {
         return lightBlock < reader.getMaxLightLevel();
     }
 
-    /** Zamanla abysstone'a dönüşme mantığı */
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!canRemainNylium(state, level, pos)) {
             level.setBlockAndUpdate(pos, AbyssBlocks.ABYSSTONE.get().defaultBlockState());
         }
     }
-
-    // --- Bonemeal ile çalışabilirlik ---
 
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {

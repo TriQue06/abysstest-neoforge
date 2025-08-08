@@ -1,5 +1,7 @@
 {
+  "parent": "minecraft:block/lava",
   "textures": {
-    "particle": "block/lava_still"
+    "still": "abysstest:block/purple_lava_still",
+    "flow": "abysstest:block/purple_lava_flow"
   }
 }

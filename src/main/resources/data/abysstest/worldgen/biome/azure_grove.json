@@ -9,7 +9,7 @@
       "tick_chance": 0.0111
     },
     "ambient_sound": "minecraft:ambient.warped_forest.loop",
-    "fog_color": 1705242,
+    "fog_color": 47866,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -17,20 +17,20 @@
       "tick_delay": 6000
     },
     "music": {
-      "max_delay": 24000,
-      "min_delay": 12000,
+      "max_delay": 12000,
+      "min_delay": 6000,
       "replace_current_music": false,
-      "sound": "minecraft:music.nether.warped_forest"
+      "sound": "abysstest:cliff"
     },
     "particle": {
       "options": {
-        "type": "minecraft:warped_spore"
+        "type": "minecraft:nautilus"
       },
-      "probability": 0.01428
+      "probability": 0.05
     },
-    "sky_color": 7254527,
-    "water_color": 4159204,
-    "water_fog_color": 329011
+    "sky_color": 47866,
+    "water_color": 47866,
+    "water_fog_color": 47866
   },
   "features": [
     [],
@@ -40,31 +40,9 @@
     [],
     [],
     [],
-    [
-      "minecraft:spring_open",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_magma",
-      "minecraft:spring_closed",
-      "minecraft:ore_gravel_nether",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_ancient_debris_large",
-      "minecraft:ore_debris_small"
-    ],
     [],
-    [
-      "minecraft:spring_lava",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:warped_fungi",
-      "minecraft:warped_forest_vegetation",
-      "minecraft:nether_sprouts",
-      "minecraft:twisting_vines"
-    ]
+    [],
+    []
   ],
   "has_precipitation": false,
   "spawn_costs": {
@@ -76,26 +54,12 @@
   "spawners": {
     "ambient": [],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:strider",
-        "maxCount": 2,
-        "minCount": 1,
-        "weight": 60
-      }
-    ],
+    "creature": [],
     "misc": [],
-    "monster": [
-      {
-        "type": "minecraft:enderman",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 1
-      }
-    ],
+    "monster": [],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 2.0
+  "temperature": 0.0
 }

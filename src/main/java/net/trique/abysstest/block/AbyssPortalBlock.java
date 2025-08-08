@@ -1,12 +1,11 @@
 package net.trique.abysstest.block;
 
-import com.mojang.logging.LogUtils;
+import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -16,35 +15,41 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Portal;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.portal.DimensionTransition;
-import net.minecraft.world.level.portal.PortalShape;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.slf4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class AbyssPortalBlock extends Block implements Portal {
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
-    private static final Logger LOGGER = LogUtils.getLogger();
-    protected static final VoxelShape X_AXIS_AABB = Block.box(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-    protected static final VoxelShape Z_AXIS_AABB = Block.box(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+public class AbyssPortalBlock extends CustomPortalBlock {
+    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
+    protected static final VoxelShape X_SHAPE = Block.box(0.0F, 0.0F, 6.0F, 16.0F, 16.0F, 10.0F);
+    protected static final VoxelShape Z_SHAPE = Block.box(6.0F, 0.0F, 0.0F, 10.0F, 16.0F, 16.0F);
+    protected static final VoxelShape Y_SHAPE = Block.box(0.0F, 6.0F, 0.0F, 16.0F, 10.0F, 16.0F);
 
-    public AbyssPortalBlock() {
-        super(BlockBehaviour.Properties.of()
-                .strength(-1.0F)
-                .noCollission()
-                .sound(SoundType.GLASS)
-                .lightLevel(state -> 11));
-        this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.X));
+    public AbyssPortalBlock(BlockBehaviour.Properties settings) {
+        super(settings);
+        this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Axis.X));
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(BlockState state, @NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+        return switch (state.getValue(AXIS)) {
+            case Z -> Z_SHAPE;
+            case Y -> Y_SHAPE;
+            default -> X_SHAPE;
+        };
+    }
+
+    @Override
+    public @NotNull ItemStack getCloneItemStack(@NotNull LevelReader world, @NotNull BlockPos pos, @NotNull BlockState state) {
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -53,78 +58,58 @@ public class AbyssPortalBlock extends Block implements Portal {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(AXIS) == Direction.Axis.Z ? Z_AXIS_AABB : X_AXIS_AABB;
-    }
-
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    public void animateTick(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, RandomSource random) {
         if (random.nextInt(100) == 0) {
             level.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-                    SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS,
-                    0.5F, random.nextFloat() * 0.4F + 0.8F, false);
+                    SoundEvents.PORTAL_AMBIENT, SoundSource.BLOCKS, 0.5F,
+                    random.nextFloat() * 0.4F + 0.8F, false);
         }
 
         for (int i = 0; i < 4; ++i) {
-            double x = pos.getX() + random.nextDouble();
-            double y = pos.getY() + random.nextDouble();
-            double z = pos.getZ() + random.nextDouble();
-            double dx = ((double) random.nextFloat() - 0.5) * 0.5;
-            double dy = ((double) random.nextFloat() - 0.5) * 0.5;
-            double dz = ((double) random.nextFloat() - 0.5) * 0.5;
-            int j = random.nextInt(2) * 2 - 1;
-
+            double d = pos.getX() + random.nextDouble();
+            double e = pos.getY() + random.nextDouble();
+            double f = pos.getZ() + random.nextDouble();
+            double g = (random.nextFloat() - 0.5F) * 0.5F;
+            double h = (random.nextFloat() - 0.5F) * 0.5F;
+            double j = (random.nextFloat() - 0.5F) * 0.5F;
+            int k = random.nextInt(2) * 2 - 1;
             if (!level.getBlockState(pos.west()).is(this) && !level.getBlockState(pos.east()).is(this)) {
-                x = pos.getX() + 0.5 + 0.25 * j;
-                dx = random.nextFloat() * 2.0F * j;
+                d = pos.getX() + 0.5 + 0.25 * k;
+                g = random.nextFloat() * 2.0F * k;
             } else {
-                z = pos.getZ() + 0.5 + 0.25 * j;
-                dz = random.nextFloat() * 2.0F * j;
+                f = pos.getZ() + 0.5 + 0.25 * k;
+                j = random.nextFloat() * 2.0F * k;
             }
-
-            level.addParticle(ParticleTypes.PORTAL, x, y, z, dx, dy, dz);
+            //level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.CRYING_OBSIDIAN.defaultBlockState()),
+            //        d, e, f, g, h, j);
         }
     }
 
     @Override
-    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (!level.isClientSide && entity.canUsePortal(false)) {
+    public void entityInside(@NotNull BlockState state, @NotNull Level world, @NotNull BlockPos pos, @NotNull Entity entity) {
+        if (entity.canUsePortal(false)) {
             entity.setAsInsidePortal(this, pos);
         }
     }
 
     @Override
-    public int getPortalTransitionTime(ServerLevel level, Entity entity) {
+    public int getPortalTransitionTime(@NotNull ServerLevel world, @NotNull Entity entity) {
         if (entity instanceof Player player) {
-            return Math.max(1, level.getGameRules().getInt(
-                    player.getAbilities().invulnerable
-                            ? GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY
-                            : GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY));
+            return Math.max(1, world.getGameRules().getInt(
+                    player.getAbilities().invulnerable ?
+                            GameRules.RULE_PLAYERS_NETHER_PORTAL_CREATIVE_DELAY :
+                            GameRules.RULE_PLAYERS_NETHER_PORTAL_DEFAULT_DELAY));
         }
         return 0;
     }
 
     @Override
-    public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
-        ResourceLocation abyssID = ResourceLocation.fromNamespaceAndPath("abysstest", "abyss");
-        ResourceKey<Level> target = ResourceKey.create(Registries.DIMENSION, abyssID);
-        ServerLevel destLevel = level.getServer().getLevel(target);
-        if (destLevel == null) return null;
-
-        double scale = DimensionType.getTeleportationScale(level.dimensionType(), destLevel.dimensionType());
-        BlockPos targetPos = destLevel.getSharedSpawnPos().atY((int) entity.getY());
-        Vec3 targetVec = new Vec3(targetPos.getX(), targetPos.getY(), targetPos.getZ());
-
-        return new DimensionTransition(destLevel, targetVec, entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), DimensionTransition.PLAY_PORTAL_SOUND);
+    public @Nullable DimensionTransition getPortalDestination(@NotNull ServerLevel world, @NotNull Entity entity, @NotNull BlockPos pos) {
+        return super.getPortalDestination(world, entity, pos);
     }
 
     @Override
-    public Transition getLocalTransition() {
+    public @NotNull Transition getLocalTransition() {
         return Transition.CONFUSION;
-    }
-
-    @Override
-    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
-        return ItemStack.EMPTY;
     }
 }
