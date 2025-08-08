@@ -34,6 +34,12 @@ public class AbyssBlockLootTableProvider extends BlockLootSubProvider {
                         applyExplosionDecay(block, LootItem.lootTableItem(AbyssBlocks.ABYSSTONE.get()))
                 ));
 
+        add(AbyssBlocks.AMBER_NYLIUM.get(),
+                block -> createSilkTouchDispatchTable(
+                        block,
+                        applyExplosionDecay(block, LootItem.lootTableItem(AbyssBlocks.ABYSSTONE.get()))
+                ));
+
         add(AbyssBlocks.SOMETHING_ORE.get(),
                 block -> createOreDrop(AbyssBlocks.SOMETHING_ORE.get(), AbyssItems.RAW_SOMETHING.get()));
 

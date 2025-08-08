@@ -6,10 +6,10 @@
   "effects": {
     "additions_sound": {
       "sound": "minecraft:ambient.crimson_forest.additions",
-      "tick_chance": 0.0111
+      "tick_chance": 0.01
     },
     "ambient_sound": "minecraft:ambient.crimson_forest.loop",
-    "fog_color": 7340543,
+    "fog_color": 8847605,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -26,11 +26,11 @@
       "options": {
         "type": "minecraft:falling_obsidian_tear"
       },
-      "probability": 0.05
+      "probability": 0.025
     },
-    "sky_color": 8388736,
-    "water_color": 8388736,
-    "water_fog_color": 8388736
+    "sky_color": 8847605,
+    "water_color": 8847605,
+    "water_fog_color": 8847605
   },
   "features": [
     [],

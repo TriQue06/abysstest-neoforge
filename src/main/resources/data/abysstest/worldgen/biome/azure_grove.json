@@ -6,10 +6,10 @@
   "effects": {
     "additions_sound": {
       "sound": "minecraft:ambient.warped_forest.additions",
-      "tick_chance": 0.0111
+      "tick_chance": 0.01
     },
     "ambient_sound": "minecraft:ambient.warped_forest.loop",
-    "fog_color": 47866,
+    "fog_color": 704240,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -26,11 +26,11 @@
       "options": {
         "type": "minecraft:nautilus"
       },
-      "probability": 0.05
+      "probability": 0.025
     },
-    "sky_color": 47866,
-    "water_color": 47866,
-    "water_fog_color": 47866
+    "sky_color": 704240,
+    "water_color": 704240,
+    "water_fog_color": 704240
   },
   "features": [
     [],

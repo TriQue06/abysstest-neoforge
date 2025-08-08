@@ -6,10 +6,10 @@
   "effects": {
     "additions_sound": {
       "sound": "minecraft:ambient.nether_wastes.additions",
-      "tick_chance": 0.0111
+      "tick_chance": 0.01
     },
     "ambient_sound": "minecraft:ambient.nether_wastes.loop",
-    "fog_color": 139,
+    "fog_color": 329110,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
@@ -22,9 +22,9 @@
       "replace_current_music": false,
       "sound": "abysstest:cliff"
     },
-    "sky_color": 139,
-    "water_color": 139,
-    "water_fog_color": 139
+    "sky_color": 329110,
+    "water_color": 329110,
+    "water_fog_color": 329110
   },
   "features": [
     [],

@@ -5,15 +5,15 @@
   "downfall": 0.0,
   "effects": {
     "additions_sound": {
-      "sound": "minecraft:ambient.nether_wastes.additions",
+      "sound": "minecraft:ambient.crimson_forest.additions",
       "tick_chance": 0.01
     },
-    "ambient_sound": "minecraft:ambient.nether_wastes.loop",
-    "fog_color": 9830540,
+    "ambient_sound": "minecraft:ambient.crimson_forest.loop",
+    "fog_color": 14446085,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
-      "sound": "minecraft:ambient.nether_wastes.mood",
+      "sound": "minecraft:ambient.crimson_forest.mood",
       "tick_delay": 6000
     },
     "music": {
@@ -22,9 +22,15 @@
       "replace_current_music": false,
       "sound": "abysstest:cliff"
     },
-    "sky_color": 9830540,
-    "water_color": 9830540,
-    "water_fog_color": 9830540
+    "particle": {
+      "options": {
+        "type": "minecraft:wax_on"
+      },
+      "probability": 0.025
+    },
+    "sky_color": 14446085,
+    "water_color": 14446085,
+    "water_fog_color": 14446085
   },
   "features": [
     [],
@@ -44,8 +50,6 @@
     "ambient": [],
     "axolotls": [],
     "creature": [],
-    "misc": [],
-    "monster": [],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

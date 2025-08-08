@@ -22,6 +22,7 @@ public class AbyssBlockStateProvider extends BlockStateProvider {
 
         nyliumBlockWithItem(AbyssBlocks.AZURE_NYLIUM, "abysstone");
         nyliumBlockWithItem(AbyssBlocks.NIGHT_NYLIUM, "abysstone");
+        nyliumBlockWithItem(AbyssBlocks.AMBER_NYLIUM, "abysstone");
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {

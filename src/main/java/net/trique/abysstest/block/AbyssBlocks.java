@@ -59,6 +59,15 @@ public class AbyssBlocks {
                     .sound(SoundType.NYLIUM)
                     .randomTicks()));
 
+    public static final DeferredBlock<Block> AMBER_NYLIUM = registerBlock("amber_nylium",
+            () -> new AbyssNyliumBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(0.4F)
+                    .sound(SoundType.NYLIUM)
+                    .randomTicks()));
+
     public static final DeferredBlock<Block> ABYSS_PORTAL = registerBlock("abyss_portal",
             () -> new AbyssPortalBlock(BlockBehaviour.Properties.of()
                     .noCollission()
