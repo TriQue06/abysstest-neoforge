@@ -4,7 +4,7 @@
     "Name": "abysstest:abysstone"
   },
   "default_fluid": {
-    "Name": "minecraft:water",
+    "Name": "abysstest:purple_lava",
     "Properties": {
       "level": "0"
     }
@@ -337,7 +337,7 @@
                 "then_run": {
                   "type": "minecraft:block",
                   "result_state": {
-                    "Name": "minecraft:air",
+                    "Name": "abysstest:purple_lava",
                     "Properties": {
                       "level": "0"
                     }

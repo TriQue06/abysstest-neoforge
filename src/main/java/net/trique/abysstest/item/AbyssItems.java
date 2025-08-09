@@ -19,6 +19,8 @@ public class AbyssItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> THING_INGOT = ITEMS.register("thing_ingot",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PURPLE_LAVA_BUCKET = ITEMS.register("purple_lava_bucket",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

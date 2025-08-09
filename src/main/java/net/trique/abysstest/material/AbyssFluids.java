@@ -1,33 +1,26 @@
 package net.trique.abysstest.material;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import net.trique.abysstest.AbyssTest;
-
-import java.util.function.Supplier;
 
 public class AbyssFluids {
 
-    private static final FluidType PURPLE_LAVA_TYPE = new FluidType(FluidType.Properties.create()
-            .density(3000)
-            .viscosity(6000)
-            .temperature(1300)
-            .lightLevel(10)
-            .canExtinguish(false)
-            .supportsBoating(false)) {};
+    public static final FlowingFluid FLOWING_PURPLE_LAVA = register("flowing_purple_lava", new PurpleLavaFluid.Flowing());
+    public static final FlowingFluid PURPLE_LAVA = register("purple_lava", new PurpleLavaFluid.Source());
 
-    public static FluidType getPurpleLavaType() {
-        return PURPLE_LAVA_TYPE;
+    private static <T extends Fluid> T register(String key, T fluid) {
+        return Registry.register(BuiltInRegistries.FLUID, key, fluid);
     }
 
-    public static final DeferredRegister<Fluid> FLUIDS =
-            DeferredRegister.create(Registries.FLUID, AbyssTest.MODID);
-
-    public static final Supplier<Fluid> PURPLE_LAVA_STILL =
-            FLUIDS.register("purple_lava_still", PurpleLavaFluid.Source::new);
-
-    public static final Supplier<Fluid> PURPLE_LAVA_FLOW =
-            FLUIDS.register("purple_lava_flow", PurpleLavaFluid.Flowing::new);
+    public static void bootstrap() {
+        for (Fluid fluid : BuiltInRegistries.FLUID) {
+            for (var fluidState : fluid.getStateDefinition().getPossibleStates()) {
+                Fluid.FLUID_STATE_REGISTRY.add(fluidState);
+            }
+        }
+    }
 }

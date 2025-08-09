@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -73,17 +74,25 @@ public class AbyssBlocks {
                     .noCollission()
                     .noOcclusion()
                     .strength(-1.0F)
-                    .lightLevel(state -> 11)
+                    .lightLevel(state -> 12)
                     .pushReaction(net.minecraft.world.level.material.PushReaction.BLOCK)
-                    .noLootTable()));
+                    .noLootTable()
+            ));
 
-    public static final DeferredBlock<LiquidBlock> PURPLE_LAVA = registerBlock("purple_lava",
-            () -> new LiquidBlock((FlowingFluid) AbyssFluids.PURPLE_LAVA_STILL.get(),
+    public static final DeferredBlock<LiquidBlock> PURPLE_LAVA = BLOCKS.register("purple_lava",
+            () -> new LiquidBlock(AbyssFluids.PURPLE_LAVA,
                     BlockBehaviour.Properties.of()
                             .mapColor(MapColor.COLOR_PURPLE)
+                            .replaceable()
+                            .noCollission()
+                            .randomTicks()
                             .strength(100.0F)
+                            .pushReaction(PushReaction.DESTROY)
                             .noLootTable()
-                            .liquid()));
+                            .liquid()
+                            .lightLevel(state -> 12)
+                            .sound(SoundType.EMPTY)
+            ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

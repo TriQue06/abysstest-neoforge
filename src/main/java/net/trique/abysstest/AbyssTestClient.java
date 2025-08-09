@@ -30,8 +30,8 @@ public class AbyssTestClient {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.ABYSS_PORTAL.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.PURPLE_LAVA.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(AbyssFluids.PURPLE_LAVA_STILL.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(AbyssFluids.PURPLE_LAVA_FLOW.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(AbyssFluids.PURPLE_LAVA, RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(AbyssFluids.FLOWING_PURPLE_LAVA, RenderType.translucent());
 
         });
     }
