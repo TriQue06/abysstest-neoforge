@@ -1,7 +1,6 @@
 {
+  "replace": false,
   "values": [
-    "minecraft:lava",
-    "minecraft:flowing_lava",
     "abysstest:purple_lava",
     "abysstest:flowing_purple_lava"
   ]

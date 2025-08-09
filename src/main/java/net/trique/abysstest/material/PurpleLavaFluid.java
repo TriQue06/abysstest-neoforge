@@ -3,6 +3,8 @@ package net.trique.abysstest.material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -15,6 +17,9 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.LavaFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.trique.abysstest.block.AbyssBlocks;
+import net.trique.abysstest.item.AbyssItems;
+
+import java.util.Optional;
 
 public abstract class PurpleLavaFluid extends LavaFluid {
 
@@ -46,8 +51,13 @@ public abstract class PurpleLavaFluid extends LavaFluid {
     }
 
     @Override
+    public Optional<SoundEvent> getPickupSound() {
+        return Optional.of(SoundEvents.BUCKET_FILL_LAVA);
+    }
+
+    @Override
     public Item getBucket() {
-        return Items.BUCKET;
+        return AbyssItems.PURPLE_LAVA_BUCKET.get();
     }
 
     public boolean isSame(Fluid fluid) {

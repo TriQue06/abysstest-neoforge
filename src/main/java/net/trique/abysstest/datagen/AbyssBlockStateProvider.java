@@ -20,9 +20,21 @@ public class AbyssBlockStateProvider extends BlockStateProvider {
         blockWithItem(AbyssBlocks.THING_ORE);
         blockWithItem(AbyssBlocks.THING_BLOCK);
 
+        // Nylium blokları (top/side/bottom ayrımı)
         nyliumBlockWithItem(AbyssBlocks.AZURE_NYLIUM, "abysstone");
         nyliumBlockWithItem(AbyssBlocks.NIGHT_NYLIUM, "abysstone");
         nyliumBlockWithItem(AbyssBlocks.AMBER_NYLIUM, "abysstone");
+
+        // Roots tipleri: dünyada cross, item’de 2D sprite
+        crossBlockWithItem2D(AbyssBlocks.NIGHT_ROOTS);
+        crossBlockWithItem2D(AbyssBlocks.AZURE_ROOTS);
+        crossBlockWithItem2D(AbyssBlocks.AMBER_ROOTS);
+        crossBlockWithItem2D(AbyssBlocks.NIGHT_FUNGUS);
+        crossBlockWithItem2D(AbyssBlocks.AZURE_FUNGUS);
+        crossBlockWithItem2D(AbyssBlocks.AMBER_FUNGUS);
+        crossBlockWithItem2D(AbyssBlocks.NIGHT_BUSH);
+        crossBlockWithItem2D(AbyssBlocks.AZURE_BUSH);
+        crossBlockWithItem2D(AbyssBlocks.AMBER_BUSH);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
@@ -33,10 +45,24 @@ public class AbyssBlockStateProvider extends BlockStateProvider {
         String name = block.getId().getPath();
         models().cubeBottomTop(
                 name,
-                modLoc("block/" + name + "_side"),      // yan yüzey (örn: azure_nylium_side.png)
-                modLoc("block/" + baseBlockTextureName),// alt yüzey (örn: abysstone.png)
-                modLoc("block/" + name)                 // üst yüzey (örn: azure_nylium.png)
+                modLoc("block/" + name + "_side"),       // side
+                modLoc("block/" + baseBlockTextureName), // bottom
+                modLoc("block/" + name)                  // top
         );
         simpleBlockWithItem(block.get(), models().getExistingFile(modLoc(name)));
+    }
+
+    private void crossBlockWithItem2D(DeferredBlock<?> block) {
+        String name = block.getId().getPath();
+
+        simpleBlock(
+                block.get(),
+                models().cross(name, modLoc("block/" + name))
+                        .renderType("cutout")
+        );
+
+        itemModels()
+                .withExistingParent(name, mcLoc("item/generated"))
+                .texture("layer0", modLoc("block/" + name));
     }
 }

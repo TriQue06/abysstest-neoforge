@@ -32,7 +32,6 @@ public class AbyssTestClient {
             ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.PURPLE_LAVA.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(AbyssFluids.PURPLE_LAVA, RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(AbyssFluids.FLOWING_PURPLE_LAVA, RenderType.translucent());
-
         });
     }
 }

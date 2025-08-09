@@ -15,7 +15,6 @@ public class AbyssSounds {
 
     public static final Supplier<SoundEvent> CLIFF = registerSoundEvent("cliff");
 
-
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(AbyssTest.MODID, name);
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));

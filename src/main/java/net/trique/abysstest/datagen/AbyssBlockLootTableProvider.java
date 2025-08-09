@@ -45,8 +45,17 @@ public class AbyssBlockLootTableProvider extends BlockLootSubProvider {
 
         add(AbyssBlocks.THING_ORE.get(),
                 block -> createOreDrop(AbyssBlocks.THING_ORE.get(), AbyssItems.RAW_THING.get()));
-    }
 
+        if (AbyssBlocks.NIGHT_ROOTS != null) dropSelf(AbyssBlocks.NIGHT_ROOTS.get());
+        if (AbyssBlocks.AZURE_ROOTS != null) dropSelf(AbyssBlocks.AZURE_ROOTS.get());
+        if (AbyssBlocks.AMBER_ROOTS != null) dropSelf(AbyssBlocks.AMBER_ROOTS.get());
+        if (AbyssBlocks.NIGHT_FUNGUS != null) dropSelf(AbyssBlocks.NIGHT_FUNGUS.get());
+        if (AbyssBlocks.AZURE_FUNGUS != null) dropSelf(AbyssBlocks.AZURE_FUNGUS.get());
+        if (AbyssBlocks.AMBER_FUNGUS != null) dropSelf(AbyssBlocks.AMBER_FUNGUS.get());
+        if (AbyssBlocks.NIGHT_BUSH != null) dropSelf(AbyssBlocks.NIGHT_BUSH.get());
+        if (AbyssBlocks.AZURE_BUSH != null) dropSelf(AbyssBlocks.AZURE_BUSH.get());
+        if (AbyssBlocks.AMBER_BUSH != null) dropSelf(AbyssBlocks.AMBER_BUSH.get());
+    }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {

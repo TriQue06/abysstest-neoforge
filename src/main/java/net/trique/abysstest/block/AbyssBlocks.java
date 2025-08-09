@@ -6,7 +6,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -23,8 +22,8 @@ public class AbyssBlocks {
             DeferredRegister.createBlocks(AbyssTest.MODID);
 
     public static final DeferredBlock<Block> ABYSSTONE = registerBlock("abysstone",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_BLUE).instrument(NoteBlockInstrument.BASEDRUM).strength(4f).requiresCorrectToolForDrops().sound(SoundType.NETHERRACK)));
+            () -> new AbysstoneBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLUE).instrument(NoteBlockInstrument.BASEDRUM).strength(3f).requiresCorrectToolForDrops().sound(SoundType.NETHERRACK)));
 
     public static final DeferredBlock<Block> SOMETHING_ORE = registerBlock("something_ore",
             () -> new DropExperienceBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of()
@@ -91,8 +90,34 @@ public class AbyssBlocks {
                             .noLootTable()
                             .liquid()
                             .lightLevel(state -> 12)
-                            .sound(SoundType.EMPTY)
-            ));
+                            .sound(SoundType.EMPTY)));
+
+    public static final DeferredBlock<Block> NIGHT_ROOTS = registerBlock("night_roots",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.ROOTS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> AZURE_ROOTS = registerBlock("azure_roots",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.ROOTS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> AMBER_ROOTS = registerBlock("amber_roots",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.ROOTS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+    
+    public static final DeferredBlock<Block> NIGHT_FUNGUS = registerBlock("night_fungus",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> AZURE_FUNGUS = registerBlock("azure_fungus",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> AMBER_FUNGUS = registerBlock("amber_fungus",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.FUNGUS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> NIGHT_BUSH = registerBlock("night_bush",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.ROOTS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> AZURE_BUSH = registerBlock("azure_bush",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.ROOTS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> AMBER_BUSH = registerBlock("amber_bush",
+            () -> new AbyssRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).replaceable().noCollission().instabreak().sound(SoundType.ROOTS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
