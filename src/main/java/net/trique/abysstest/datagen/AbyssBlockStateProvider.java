@@ -1,6 +1,5 @@
 package net.trique.abysstest.datagen;
 
-import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -16,6 +15,7 @@ public class AbyssBlockStateProvider extends BlockStateProvider {
         super(output, AbyssTest.MODID, exFileHelper);
     }
 
+    @SuppressWarnings("removal")
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(AbyssBlocks.ABYSSTONE);
@@ -44,38 +44,26 @@ public class AbyssBlockStateProvider extends BlockStateProvider {
         crossBlockWithItem2D(AbyssBlocks.AZURE_BUSH);
         crossBlockWithItem2D(AbyssBlocks.AMBER_BUSH);
 
-        // 6-yönlü amethyst cluster’lar
         clusterBlockWithItem(AbyssBlocks.STRANGE_CLUSTER);
         clusterBlockWithItem(AbyssBlocks.WEIRD_CLUSTER);
         clusterBlockWithItem(AbyssBlocks.ODD_CLUSTER);
-
-        // Not: Portal ve Liquid (purple_lava) için model üretmiyoruz.
     }
-
-    /* ----- Helpers ----- */
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
         simpleBlockWithItem(deferredBlock.get(), cubeAll(deferredBlock.get()));
     }
 
-    /**
-     * Nylium gibi üst/alt/yan dokuları farklı olan bloklar için.
-     * baseBlockTextureName: bottom için kullanılacak doku (örn. "abysstone")
-     */
     private void nyliumBlockWithItem(DeferredBlock<?> block, String baseBlockTextureName) {
         String name = block.getId().getPath();
         models().cubeBottomTop(
                 name,
-                modLoc("block/" + name + "_side"),       // side
-                modLoc("block/" + baseBlockTextureName), // bottom
-                modLoc("block/" + name)                  // top
+                modLoc("block/" + name + "_side"),
+                modLoc("block/" + baseBlockTextureName),
+                modLoc("block/" + name)
         );
         simpleBlockWithItem(block.get(), models().getExistingFile(modLoc(name)));
     }
 
-    /**
-     * Cross bitkiler: dünyada cross modeli, item’de 2D sprite.
-     */
     private void crossBlockWithItem2D(DeferredBlock<?> block) {
         String name = block.getId().getPath();
 
@@ -93,29 +81,40 @@ public class AbyssBlockStateProvider extends BlockStateProvider {
     private void clusterBlockWithItem(DeferredBlock<?> block) {
         String name = block.getId().getPath();
 
-        // 1) Model: minecraft:block/cross parent + "cross" texture key
         var blockModel = models()
                 .withExistingParent(name, mcLoc("block/cross"))
                 .texture("cross", modLoc("block/" + name))
                 .renderType("cutout");
 
-        // 2) Blockstate: FACING (ve varsa WATERLOGGED) dâhil tüm stateleri tek modelle eşle
         getVariantBuilder(block.get())
-                .forAllStates(state -> ConfiguredModel.builder()
-                        .modelFile(blockModel)
-                        .build());
+                .forAllStatesExcept(state -> {
+                    var facing = state.getValue(BlockStateProperties.FACING);
+                    int xRot = 0;
+                    int yRot = 0;
 
-        // 3) Item modelini burada üretmiyoruz (elde 2D istiyoruz).
-        //    ItemModelProvider'da: flatBlockItem(AbyssBlocks.STRANGE_CLUSTER); vb. kaldı.
+                    switch (facing) {
+                        case UP -> { xRot = 0;   yRot = 0;   }
+                        case DOWN -> { xRot = 180; yRot = 0;  }
+                        case NORTH -> { xRot = 90;  yRot = 0;  }
+                        case SOUTH -> { xRot = 90;  yRot = 180; }
+                        case WEST  -> { xRot = 90;  yRot = 270; }
+                        case EAST  -> { xRot = 90;  yRot = 90;  }
+                    }
+
+                    return ConfiguredModel.builder()
+                            .modelFile(blockModel)
+                            .rotationX(xRot)
+                            .rotationY(yRot)
+                            .build();
+                }, BlockStateProperties.WATERLOGGED);
     }
 
     private void massBlockWithItem(DeferredBlock<?> block) {
-        String name = block.getId().getPath();                 // e.g. "azure_nylium_mass"
+        String name = block.getId().getPath();
         String nyliumTex = name.replace("_nylium_mass", "_nylium");
         simpleBlockWithItem(
                 block.get(),
                 models().cubeAll(name, modLoc("block/" + nyliumTex))
         );
     }
-
 }

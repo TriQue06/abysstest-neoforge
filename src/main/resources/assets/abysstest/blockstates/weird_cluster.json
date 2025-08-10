@@ -1,40 +1,30 @@
 {
   "variants": {
-    "facing=down,waterlogged=false": {
+    "facing=down": {
+      "model": "abysstest:block/weird_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "abysstest:block/weird_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "abysstest:block/weird_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "abysstest:block/weird_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
       "model": "abysstest:block/weird_cluster"
     },
-    "facing=down,waterlogged=true": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=east,waterlogged=false": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=east,waterlogged=true": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=north,waterlogged=false": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=north,waterlogged=true": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=south,waterlogged=false": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=south,waterlogged=true": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=up,waterlogged=false": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=up,waterlogged=true": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=west,waterlogged=false": {
-      "model": "abysstest:block/weird_cluster"
-    },
-    "facing=west,waterlogged=true": {
-      "model": "abysstest:block/weird_cluster"
+    "facing=west": {
+      "model": "abysstest:block/weird_cluster",
+      "x": 90,
+      "y": 270
     }
   }
 }
