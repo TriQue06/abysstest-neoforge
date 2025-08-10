@@ -8,9 +8,40 @@
   "item.abysstest.raw_thing": "Raw Thing",
   "item.abysstest.thing_ingot": "Thing Ingot",
 
+  "item.abysstest.strange_shard": "Strange Shard",
+  "item.abysstest.weird_shard": "Weird Shard",
+  "item.abysstest.odd_shard": "Odd Shard",
+
+  "item.abysstest.purple_lava_bucket": "Purple Lava",
+
+  "block.abysstest.purple_lava": "Purple Lava",
+
   "block.abysstest.abysstone": "Abysstone",
   "block.abysstest.something_ore": "Something Ore",
   "block.abysstest.something_block": "Block of Something",
   "block.abysstest.thing_ore": "Thing Ore",
-  "block.abysstest.thing_block": "Block of Thing"
+  "block.abysstest.thing_block": "Block of Thing",
+
+  "block.abysstest.azure_nylium": "Azure Nylium",
+  "block.abysstest.night_nylium": "Night Nylium",
+  "block.abysstest.amber_nylium": "Amber Nylium",
+
+  "block.abysstest.night_roots": "Night Roots",
+  "block.abysstest.azure_roots": "Azure Roots",
+  "block.abysstest.amber_roots": "Amber Roots",
+
+  "block.abysstest.night_fungus": "Night Fungus",
+  "block.abysstest.azure_fungus": "Azure Fungus",
+  "block.abysstest.amber_fungus": "Amber Fungus",
+
+  "block.abysstest.night_bush": "Night Bush",
+  "block.abysstest.azure_bush": "Azure Bush",
+  "block.abysstest.amber_bush": "Amber Bush",
+
+  "block.abysstest.strange_cluster": "Strange Cluster",
+  "block.abysstest.weird_cluster": "Weird Cluster",
+  "block.abysstest.odd_cluster": "Odd Cluster",
+
+  "fluid.abysstest.purple_lava": "Purple Lava",
+  "fluid.abysstest.flowing_purple_lava": "Flowing Purple Lava"
 }

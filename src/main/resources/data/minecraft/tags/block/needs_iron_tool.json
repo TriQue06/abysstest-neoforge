@@ -7,6 +7,12 @@
     "abysstest:thing_block",
     "abysstest:night_nylium",
     "abysstest:azure_nylium",
-    "abysstest:amber_nylium"
+    "abysstest:amber_nylium",
+    "abysstest:strange_cluster",
+    "abysstest:weird_cluster",
+    "abysstest:odd_cluster",
+    "abysstest:azure_nylium_mass",
+    "abysstest:night_nylium_mass",
+    "abysstest:amber_nylium_mass"
   ]
 }

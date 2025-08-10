@@ -17,4 +17,7 @@ public class AbyssBiomeTags {
 
     public static final TagKey<Biome> IS_AMBER_GROVE =
             TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("abysstest", "is_amber_grove"));
+
+    public static final TagKey<Biome> IS_CRYSTAL_CANYON =
+            TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("abysstest", "is_crystal_canyon"));
 }

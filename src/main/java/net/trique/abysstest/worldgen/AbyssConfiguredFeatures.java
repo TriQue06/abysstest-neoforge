@@ -41,6 +41,14 @@ public class AbyssConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> AZURE_BUSH_PATCH = registerKey("azure_bush_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBER_BUSH_PATCH = registerKey("amber_bush_patch");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STRANGE_CLUSTER_KEY = registerKey("strange_cluster_key");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WEIRD_CLUSTER_KEY = registerKey("weird_cluster_key");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ODD_CLUSTER_KEY = registerKey("odd_cluster_key");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AZURE_MASS_KEY     = registerKey("azure_mass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> NIGHT_MASS_KEY     = registerKey("night_mass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AMBER_MASS_KEY     = registerKey("amber_mass");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest abyssReplaceables = new BlockMatchTest(AbyssBlocks.ABYSSTONE.get());
 
@@ -102,6 +110,7 @@ public class AbyssConfiguredFeatures {
                         List.of(AbyssBlocks.AMBER_NYLIUM.get(), AbyssBlocks.ABYSSTONE.get())
                 )
         );
+
         FeatureUtils.register(
                 context, NIGHT_BUSH_PATCH, Feature.RANDOM_PATCH,
                 FeatureUtils.simplePatchConfiguration(
@@ -128,6 +137,40 @@ public class AbyssConfiguredFeatures {
                         List.of(AbyssBlocks.AMBER_NYLIUM.get(), AbyssBlocks.ABYSSTONE.get())
                 )
         );
+        FeatureUtils.register(
+                context, STRANGE_CLUSTER_KEY, Feature.RANDOM_PATCH,
+                FeatureUtils.simplePatchConfiguration(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(AbyssBlocks.STRANGE_CLUSTER.get().defaultBlockState())),
+                        List.of(AbyssBlocks.ABYSSTONE.get())
+                )
+        );
+
+        FeatureUtils.register(
+                context, WEIRD_CLUSTER_KEY, Feature.RANDOM_PATCH,
+                FeatureUtils.simplePatchConfiguration(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(AbyssBlocks.WEIRD_CLUSTER.get().defaultBlockState())),
+                        List.of(AbyssBlocks.ABYSSTONE.get())
+                )
+        );
+
+        FeatureUtils.register(
+                context, ODD_CLUSTER_KEY, Feature.RANDOM_PATCH,
+                FeatureUtils.simplePatchConfiguration(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(AbyssBlocks.ODD_CLUSTER.get().defaultBlockState())),
+                        List.of(AbyssBlocks.ABYSSTONE.get())
+                )
+        );
+
+        register(context, AZURE_MASS_KEY, Feature.ORE,
+                new OreConfiguration(abyssReplaceables, AbyssBlocks.AZURE_NYLIUM_MASS.get().defaultBlockState(), 8));
+        register(context, NIGHT_MASS_KEY, Feature.ORE,
+                new OreConfiguration(abyssReplaceables, AbyssBlocks.NIGHT_NYLIUM_MASS.get().defaultBlockState(), 8));
+        register(context, AMBER_MASS_KEY, Feature.ORE,
+                new OreConfiguration(abyssReplaceables, AbyssBlocks.AMBER_NYLIUM_MASS.get().defaultBlockState(), 8));
+
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

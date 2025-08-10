@@ -21,12 +21,22 @@ public class AbyssPlacedFeatures {
     public static final ResourceKey<PlacedFeature> NIGHT_ROOTS_PLACED = registerKey("night_roots_placed");
     public static final ResourceKey<PlacedFeature> AZURE_ROOTS_PLACED = registerKey("azure_roots_placed");
     public static final ResourceKey<PlacedFeature> AMBER_ROOTS_PLACED = registerKey("amber_roots_placed");
+
     public static final ResourceKey<PlacedFeature> NIGHT_FUNGUS_PLACED = registerKey("night_fungus_placed");
     public static final ResourceKey<PlacedFeature> AZURE_FUNGUS_PLACED = registerKey("azure_fungus_placed");
     public static final ResourceKey<PlacedFeature> AMBER_FUNGUS_PLACED = registerKey("amber_fungus_placed");
+
     public static final ResourceKey<PlacedFeature> NIGHT_BUSH_PLACED = registerKey("night_bush_placed");
     public static final ResourceKey<PlacedFeature> AZURE_BUSH_PLACED = registerKey("azure_bush_placed");
     public static final ResourceKey<PlacedFeature> AMBER_BUSH_PLACED = registerKey("amber_bush_placed");
+
+    public static final ResourceKey<PlacedFeature> STRANGE_CLUSTER_PLACED = registerKey("strange_cluster_placed");
+    public static final ResourceKey<PlacedFeature> WEIRD_CLUSTER_PLACED = registerKey("weird_cluster_placed");
+    public static final ResourceKey<PlacedFeature> ODD_CLUSTER_PLACED = registerKey("odd_cluster_placed");
+
+    public static final ResourceKey<PlacedFeature> AZURE_MASS_PLACED_KEY     = registerKey("azure_mass_placed");
+    public static final ResourceKey<PlacedFeature> NIGHT_MASS_PLACED_KEY     = registerKey("night_mass_placed");
+    public static final ResourceKey<PlacedFeature> AMBER_MASS_PLACED_KEY     = registerKey("amber_mass_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configured = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -88,6 +98,42 @@ public class AbyssPlacedFeatures {
         register(context, AMBER_BUSH_PLACED,
                 configured.getOrThrow(AbyssConfiguredFeatures.AMBER_BUSH_PATCH),
                 rootsModifiers(1)
+        );
+
+        register(context, STRANGE_CLUSTER_PLACED,
+                configured.getOrThrow(AbyssConfiguredFeatures.STRANGE_CLUSTER_KEY),
+                rootsModifiers(1)
+        );
+
+        register(context, WEIRD_CLUSTER_PLACED,
+                configured.getOrThrow(AbyssConfiguredFeatures.WEIRD_CLUSTER_KEY),
+                rootsModifiers(1)
+        );
+
+        register(context, ODD_CLUSTER_PLACED,
+                configured.getOrThrow(AbyssConfiguredFeatures.ODD_CLUSTER_KEY),
+                rootsModifiers(1)
+        );
+
+        register(context, AZURE_MASS_PLACED_KEY,
+                configured.getOrThrow(AbyssConfiguredFeatures.AZURE_MASS_KEY),
+                AbyssOrePlacement.commonOrePlacement(
+                        48, HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(128))
+                )
+        );
+
+        register(context, NIGHT_MASS_PLACED_KEY,
+                configured.getOrThrow(AbyssConfiguredFeatures.NIGHT_MASS_KEY),
+                AbyssOrePlacement.commonOrePlacement(
+                        48, HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(128))
+                )
+        );
+
+        register(context, AMBER_MASS_PLACED_KEY,
+                configured.getOrThrow(AbyssConfiguredFeatures.AMBER_MASS_KEY),
+                AbyssOrePlacement.commonOrePlacement(
+                        48, HeightRangePlacement.uniform(VerticalAnchor.absolute(32), VerticalAnchor.absolute(128))
+                )
         );
     }
 

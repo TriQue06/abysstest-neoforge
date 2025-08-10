@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#abysstest:is_amber_grove",
+  "features": "abysstest:amber_mass_placed",
+  "step": "underground_ores"
+}

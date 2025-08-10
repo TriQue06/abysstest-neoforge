@@ -42,6 +42,9 @@ public class AbyssItemModelProvider extends ItemModelProvider {
         basicItem(AbyssItems.RAW_THING.get());
         basicItem(AbyssItems.THING_INGOT.get());
         basicItem(AbyssItems.PURPLE_LAVA_BUCKET.get());
+        basicItem(AbyssItems.STRANGE_SHARD.get());
+        basicItem(AbyssItems.WEIRD_SHARD.get());
+        basicItem(AbyssItems.ODD_SHARD.get());
 
         flatBlockItem(AbyssBlocks.NIGHT_ROOTS);
         flatBlockItem(AbyssBlocks.AZURE_ROOTS);
@@ -52,6 +55,10 @@ public class AbyssItemModelProvider extends ItemModelProvider {
         flatBlockItem(AbyssBlocks.NIGHT_BUSH);
         flatBlockItem(AbyssBlocks.AZURE_BUSH);
         flatBlockItem(AbyssBlocks.AMBER_BUSH);
+
+        flatBlockItem(AbyssBlocks.STRANGE_CLUSTER);
+        flatBlockItem(AbyssBlocks.WEIRD_CLUSTER);
+        flatBlockItem(AbyssBlocks.ODD_CLUSTER);
     }
 
     private ItemModelBuilder handheldItem(DeferredItem<?> item) {

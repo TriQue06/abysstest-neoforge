@@ -28,6 +28,9 @@ public class AbyssTestClient {
         AbyssTest.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
         event.enqueueWork(() -> {
+            ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.STRANGE_CLUSTER.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.WEIRD_CLUSTER.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.ODD_CLUSTER.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.ABYSS_PORTAL.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(AbyssBlocks.PURPLE_LAVA.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(AbyssFluids.PURPLE_LAVA, RenderType.translucent());

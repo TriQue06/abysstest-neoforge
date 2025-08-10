@@ -22,6 +22,12 @@ public class AbyssItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> PURPLE_LAVA_BUCKET = ITEMS.register("purple_lava_bucket",
             () -> new BucketItem(AbyssFluids.PURPLE_LAVA, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final DeferredItem<Item> STRANGE_SHARD = ITEMS.register("strange_shard",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WEIRD_SHARD = ITEMS.register("weird_shard",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ODD_SHARD = ITEMS.register("odd_shard",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

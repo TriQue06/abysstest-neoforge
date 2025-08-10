@@ -25,6 +25,9 @@ public class AbyssCreativeModeTabs {
                         output.accept(AbyssItems.RAW_THING);
                         output.accept(AbyssItems.THING_INGOT);
                         output.accept(AbyssItems.PURPLE_LAVA_BUCKET);
+                        output.accept(AbyssItems.STRANGE_SHARD);
+                        output.accept(AbyssItems.WEIRD_SHARD);
+                        output.accept(AbyssItems.ODD_SHARD);
                     }).build());
 
     public static final Supplier<CreativeModeTab> ABYSS_BLOCKS_TAB = CREATIVE_MODE_TAB.register("abyss_blocks_tab",
@@ -49,6 +52,12 @@ public class AbyssCreativeModeTabs {
                         output.accept(AbyssBlocks.AZURE_BUSH);
                         output.accept(AbyssBlocks.NIGHT_BUSH);
                         output.accept(AbyssBlocks.AMBER_BUSH);
+                        output.accept(AbyssBlocks.STRANGE_CLUSTER);
+                        output.accept(AbyssBlocks.WEIRD_CLUSTER);
+                        output.accept(AbyssBlocks.ODD_CLUSTER);
+                        output.accept(AbyssBlocks.AZURE_NYLIUM_MASS);
+                        output.accept(AbyssBlocks.NIGHT_NYLIUM_MASS);
+                        output.accept(AbyssBlocks.AMBER_NYLIUM_MASS);
                     }).build());
 
     public static void register(IEventBus eventBus) {

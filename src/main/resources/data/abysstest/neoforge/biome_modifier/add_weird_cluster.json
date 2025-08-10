@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#abysstest:is_crystal_canyon",
+  "features": "abysstest:weird_cluster_placed",
+  "step": "top_layer_modification"
+}

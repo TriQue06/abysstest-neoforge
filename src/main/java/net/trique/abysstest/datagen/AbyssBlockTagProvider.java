@@ -26,9 +26,20 @@ public class AbyssBlockTagProvider extends BlockTagsProvider {
                 .add(AbyssBlocks.THING_BLOCK.get())
                 .add(AbyssBlocks.NIGHT_NYLIUM.get())
                 .add(AbyssBlocks.AZURE_NYLIUM.get())
-                .add(AbyssBlocks.AMBER_NYLIUM.get());
+                .add(AbyssBlocks.AMBER_NYLIUM.get())
+                .add(AbyssBlocks.STRANGE_CLUSTER.get())
+                .add(AbyssBlocks.WEIRD_CLUSTER.get())
+                .add(AbyssBlocks.ODD_CLUSTER.get())
+                .add(AbyssBlocks.AZURE_NYLIUM_MASS.get())
+                .add(AbyssBlocks.NIGHT_NYLIUM_MASS.get())
+                .add(AbyssBlocks.AMBER_NYLIUM_MASS.get());
 
-        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+        tag(BlockTags.CRYSTAL_SOUND_BLOCKS)
+                .add(AbyssBlocks.STRANGE_CLUSTER.get())
+                .add(AbyssBlocks.WEIRD_CLUSTER.get())
+                .add(AbyssBlocks.ODD_CLUSTER.get());
+
+        tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(AbyssBlocks.ABYSSTONE.get())
                 .add(AbyssBlocks.SOMETHING_ORE.get())
                 .add(AbyssBlocks.SOMETHING_BLOCK.get())
@@ -36,6 +47,12 @@ public class AbyssBlockTagProvider extends BlockTagsProvider {
                 .add(AbyssBlocks.THING_BLOCK.get())
                 .add(AbyssBlocks.NIGHT_NYLIUM.get())
                 .add(AbyssBlocks.AZURE_NYLIUM.get())
-                .add(AbyssBlocks.AMBER_NYLIUM.get());
+                .add(AbyssBlocks.AMBER_NYLIUM.get())
+                .add(AbyssBlocks.STRANGE_CLUSTER.get())
+                .add(AbyssBlocks.WEIRD_CLUSTER.get())
+                .add(AbyssBlocks.ODD_CLUSTER.get())
+                .add(AbyssBlocks.AZURE_NYLIUM_MASS.get())
+                .add(AbyssBlocks.NIGHT_NYLIUM_MASS.get())
+                .add(AbyssBlocks.AMBER_NYLIUM_MASS.get());
     }
 }
